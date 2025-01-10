@@ -66,7 +66,7 @@ def chat(request, recipient):
             recipient_query = Q(sender=models.User.objects.filter(username=recipient).first(), recipient=request.user)
             messages = Message.objects.filter(sender_query | recipient_query).all()
             context = {
-                'messages': messages.order_by('-timestamp'),
+                'messages': messages.order_by('timestamp'),
                 'contact': recipient,
             }
             return render(request, 'messenger/chat.html', context)

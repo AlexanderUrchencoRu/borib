@@ -22,10 +22,14 @@
   .bg {
     background-color: #343a40;
   }
+  .sticky {
+    position: sticky;
+    top: 0;
+  }
 </style>
 <div class="row justify-content-center mb-5 mt-5 px-5">
   <div class="col-md-4 mb-3 mt-3">
-    <div class="card bg-dark text-white">
+    <div class="sticky card bg-dark text-white">
         <div class="card-body">
             <form action="{% url 'messenger:send' contact %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
@@ -71,5 +75,6 @@
 <script>
   const cardBody = document.querySelector('.card-body');
   cardBody.scrollTop = cardBody.scrollHeight;
+  window.scrollTo(0, document.body.scrollHeight);
 </script>
 {% endblock body %}
